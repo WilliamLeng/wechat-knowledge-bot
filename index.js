@@ -361,7 +361,7 @@ async function sendDingTalkMessage(message) {
  */
 app.get('/dingtalk/test', async (req, res) => {
   try {
-    const message = `🤖 知识库机器人测试消息\n\n时间：${new Date().toLocaleString('zh-CN')}\n状态：服务运行正常！\n\n如果你看到这条消息，说明机器人已经成功连接到钉钉群了！`;
+   const message = `机器人测试消息 🤖\n\n时间：${new Date().toLocaleString('zh-CN')}\n状态：服务运行正常！\n\n如果你看到这条消息，说明问答机器人已经成功连接到钉钉群了！`;
     
     const result = await sendDingTalkMessage(message);
     
