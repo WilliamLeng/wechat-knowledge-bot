@@ -1,0 +1,24 @@
+{
+  "name": "wechat-knowledge-bot",
+  "version": "1.0.0",
+  "description": "企业微信知识库机器人",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "crypto": "^1.0.1",
+    "xml2js": "^0.6.2",
+    "dotenv": "^16.3.1",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["wechat", "bot", "knowledge", "ai"],
+  "author": "",
+  "license": "MIT"
+}

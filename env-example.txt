@@ -1,0 +1,22 @@
+# 企业微信配置
+WECHAT_TOKEN=your_wechat_token_here
+WECHAT_ENCODING_AES_KEY=your_encoding_aes_key_here
+
+# DeepSeek API配置
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+
+# GitHub配置（用于存储知识库）
+GITHUB_REPO=your_username/your_knowledge_repo
+GITHUB_TOKEN=your_github_personal_access_token
+
+# 向量数据库配置（可选，用于大规模PDF知识库）
+VECTOR_DB_TYPE=chroma  # chroma, pinecone, faiss
+VECTOR_DB_URL=http://localhost:8000  # 如果使用远程向量数据库
+OPENAI_API_KEY=your_openai_api_key  # 用于向量化（可选）
+
+# 服务器配置
+PORT=3000
+
+# 知识库配置
+KNOWLEDGE_BASE_TYPE=simple  # simple 或 rag
+PDF_PROCESSING_ENABLED=true
