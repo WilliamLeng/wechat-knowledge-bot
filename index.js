@@ -319,6 +319,66 @@ app.post('/', async (req, res) => {
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
+// 健康检查接口
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// ==================== 钉钉机器人支持 ====================
+
+// 钉钉Webhook配置
+const DINGTALK_WEBHOOK_URL = process.env.DINGTALK_WEBHOOK_URL;
+
+/**
+ * 发送消息到钉钉群
+ */
+async function sendDingTalkMessage(message) {
+  if (!DINGTALK_WEBHOOK_URL) {
+    throw new Error('钉钉Webhook URL未配置');
+  }
+
+  try {
+    const response = await axios.post(DINGTALK_WEBHOOK_URL, {
+      msgtype: 'text',
+      text: {
+        content: message
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('发送钉钉消息失败:', error.message);
+    throw error;
+  }
+}
+
+/**
+ * 钉钉测试接口
+ */
+app.get('/dingtalk/test', async (req, res) => {
+  try {
+    const message = `🤖 知识库机器人测试消息\n\n时间：${new Date().toLocaleString('zh-CN')}\n状态：服务运行正常！\n\n如果你看到这条消息，说明机器人已经成功连接到钉钉群了！`;
+    
+    const result = await sendDingTalkMessage(message);
+    
+    res.json({
+      success: true,
+      message: '消息已发送到钉钉群',
+      result: result
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// ==================== 管理页面功能 ====================
 
 // ==================== 管理页面功能 ====================
 
